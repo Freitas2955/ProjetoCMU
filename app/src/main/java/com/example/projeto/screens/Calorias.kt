@@ -1,5 +1,6 @@
 package com.example.projeto.screens
 
+import android.content.Intent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -8,19 +9,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.projeto.reuse.BottomNavigationBar
 import com.example.projeto.reuse.Header
-
-
-//Nao esta a dar como quero
-
 
 
 @Composable
@@ -86,15 +85,25 @@ fun MealSection(mealName: String, totalCalories: Int, items: List<Pair<String, I
                 Text(text = calories.toString(), fontSize = 16.sp, color = Color.Black)
             }
         }
+
+        // Adicionando o contexto
+        val context = LocalContext.current
+
+        // Adicionando o Modifier.clickable
         Text(
             text = "ADICIONAR ALIMENTO",
             fontSize = 14.sp,
             color = Color(0xFFFF5722),
             fontWeight = FontWeight.Bold,
-            //Falta adicionar a opcao de botao para ir para a pagina de adicionar alimento
+            modifier = Modifier.clickable {
+                // Iniciando a nova atividade para adicionar um alimento
+                //val intent = Intent(context, AddAlimento::class.java)
+                //context.startActivity(intent)
+            }
         )
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
